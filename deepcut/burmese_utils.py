@@ -10,28 +10,28 @@ CHAR_TYPE = {
 
     u'ယရလဝသဟဠအ': 'c_m', # "miscellaneous" consonants
 
-    u'ျြွှလ': 'm',# medial consonant diacritics
+    u'ျြွှလ': 'd_mc',# medial consonant diacritics
 
     u'ဣဤဥဦဧဩဪ': 'v', # independent vowels
 
-    # diacritic other
-    u'်္': 'd_o', # change vowel, sometimes consonant final
-    u'့': 'd_o', # creaky tone
-    u'ာ': 'd_o', # low tone
-    u'ါ': 'd_o', # same as ာ
-    u'း': 'd_o', # high tone
-    u'ေ': 'd_o', # changes vowel
-    u'ဲ': 'd_o', # changes vowel, high tone
-    u'ု': 'd_o', # changes vowel, high tone
-    u'ူ': 'd_o', # changes vowel
-    u'ိ': 'd_o', # changes vowel, creaky tone
-    u'ီ': 'd_o', # changes vowel
-    u'ံ': 'd_o', # nasalized final
-    u'ၙ': 'd_o', # vocalic LL
-    u'ၖ': 'd_o', # Sanskrit r̥
-    u'ၗ': 'd_o', # Sanskrit r̥̄
+    # tone diacritics
+    u'့': 'd_t', # creaky tone
+    u'ာ': 'd_t', # low tone
+    u'ါ': 'd_t', # alternative spelling for ာ
+    u'း': 'd_t', # high tone
 
-    # Shan, Rumai, and Mon
+    # vowels (with some tone changes)
+    u'်္': 'd_v', # change vowel, sometimes consonant final
+    u'ေ': 'd_v', # changes vowel
+    u'ဲ': 'd_v', # changes vowel, high tone
+    u'ု': 'd_v', # changes vowel, high tone
+    u'ူ': 'd_v', # changes vowel
+    u'ိ': 'd_v', # changes vowel, creaky tone
+    u'ီ': 'd_v', # changes vowel
+    u'ံ': 'd_v', # nasalized final
+    u'ၙ': 'd_v', # vocalic LL
+
+    # Shan, Rumai, Mon and Sanskrit
     u'ၢ': 'f', # Sgaw Karen eu
     u'ႅ': 'f', # Shan e above
     u'ႄ': 'f', # Shan e
@@ -45,20 +45,27 @@ CHAR_TYPE = {
     u'ၤ': 'f', # Sgaw Karen ke pho tone
     u'ဴ': 'f', # Mon o
     u'ၼ': 'f', # Shan na
+    u'ၖ': 'f', # Sanskrit r̥
+    u'ၗ': 'f', # Sanskrit r̥̄
 
     # sentence-related markers
     u'၊': 's', # period
     u'။': 's', # period
     u'၏': 's', # period after a verb
     u'၍': 's', # semicolon
-    u'၌': 'w', # locative ('at')
-    u'၎': 'w', # used in "ditto" mark
     u'႟': 's', # Shan exclamation mark
+
+    # words
+    u'၌': 'w_at', # locative ('at')
+    u'၎': 'w_ditto', # aforementioned
 
     # digits
     u'0123456789': 'd',
     u'၀၁၂၃၄၅၆၇၈၉': 'd',
     u'႐႑႒႓႔႕႖႗႘႙': 'd', # Shan
+
+    # junk; required to prevent OOV during training
+    '體聚新匯×窶º慧集智創・': 'j',
 
     # quotation marks
     u'"': 'q',
@@ -82,11 +89,11 @@ for ks, v in CHAR_TYPE.items():
 # create map of dictionary to character
 CHARS = list(CHAR_TYPE_FLATTEN.keys())
 CHARS += [
-    u'\n', u' ', u'!', u'"', u'#', u'$', u'%', u'&', "'", u'(', u')', u'*', u'+',
+    u'\n', u'!', u'#', u'$', u'%', u'&', u'(', u')', u'*', u'+',
     u',', u'-', u'.', u'/',
     u':', u';', u'<', u'=', u'>', u'?', u'@',
     u'[', u'\\', u']', u'^', u'_',
-    u'other', u'}', u'~', u'‘', u'’', u'\ufeff',
+    u'other', u'}', u'~', u'\ufeff',
     u'、', u'–', u'…', u'€', u'`', u'—', u'£'
 ]
 CHARS_MAP = {v: k for k, v in enumerate(CHARS)}

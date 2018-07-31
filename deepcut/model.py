@@ -12,6 +12,7 @@ def get_convo_nn2(no_word=200, n_gram=21, no_char=-1, no_type=-1):
         raise ValueError("must specify number of characters present in data")
     if no_type == -1:
         raise ValueError("must specify number of character types present in data")
+    print("Number of chars: " + str(no_char))
     input1 = Input(shape=(n_gram,))
     input2 = Input(shape=(n_gram,))
 
