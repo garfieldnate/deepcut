@@ -20,8 +20,11 @@ CHAR_TYPE = {
     u'ါ': 'd_t', # alternative spelling for ာ
     u'း': 'd_t', # high tone
 
+    u'်': 'virama', # kills inherent vowel
+    u'္': 'stack', # indicates consonant stacking
+    u'ငဉညနမကစတပ': 'final', # can appear in syllable-final position
+
     # vowels (with some tone changes)
-    u'်္': 'd_v', # change vowel, sometimes consonant final
     u'ေ': 'd_v', # changes vowel
     u'ဲ': 'd_v', # changes vowel, high tone
     u'ု': 'd_v', # changes vowel, high tone

@@ -12,7 +12,7 @@ import six
 from keras import backend
 
 from .model import get_convo_nn2
-from .stop_words import THAI_STOP_WORDS
+from .stop_words import THAI_STOP_WORDS, MYANMAR_STOP_WORDS
 from .utils import CHAR_TYPES_MAP, CHARS_MAP, create_feature_array
 
 MODULE_PATH = os.path.dirname(__file__)
@@ -83,6 +83,8 @@ def _check_stop_list(stop):
     """
     if stop == "thai":
         return THAI_STOP_WORDS
+    elif stop == "myanmar":
+        return MYANMAR_STOP_WORDS
     elif isinstance(stop, six.string_types):
         raise ValueError("not a built-in stop list: %s" % stop)
     elif stop is None:
